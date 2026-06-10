@@ -10,13 +10,13 @@ export default function CTASection() {
       <img
         src="/images/cta-heart.svg"
         alt=""
-        className="absolute left-[calc(50%-450px)] top-[196px] w-[130px] pointer-events-none z-10"
+        className="absolute left-[320px] top-[196px] w-[130px] pointer-events-none z-10"
       />
 
       <img
         src="/images/cta-star.svg"
         alt=""
-        className="absolute right-[calc(50%-490px)] bottom-[200px] w-[130px] pointer-events-none z-10"
+        className="absolute right-[263px] top-[454px] w-[166px] pointer-events-none z-10"
       />
 
       <div className="absolute inset-0 flex items-center justify-center">

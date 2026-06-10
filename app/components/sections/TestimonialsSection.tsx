@@ -48,6 +48,19 @@ export default function TestimonialsSection() {
 
   return (
     <section className="bg-[#F6F6F5] w-full px-20 py-[120px] flex flex-col gap-12 relative overflow-hidden">
+      {/* Background decorative wave loops */}
+      <img
+        src="/images/testimonial-wave1.svg"
+        alt=""
+        className="absolute pointer-events-none"
+        style={{ width: "1906px", height: "683px", top: "79px", left: "-425px" }}
+      />
+      <img
+        src="/images/testimonial-wave2.svg"
+        alt=""
+        className="absolute pointer-events-none"
+        style={{ width: "1463px", height: "683px", top: "79px", left: "-426px" }}
+      />
       <div className="flex items-end justify-between w-full">
         <div className="flex flex-col gap-4 shrink-0">
           <p className="text-[#FB652B] text-xs font-semibold leading-6 uppercase">
@@ -62,13 +75,13 @@ export default function TestimonialsSection() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-6">
-        <div className="flex gap-6 justify-center flex-wrap">
+      <div className="flex flex-col gap-6 w-full">
+        <div className="flex gap-6 justify-center w-full">
           {row1.map((t) => (
             <TestimonialCard key={t.id} name={t.name} rating={t.rating} review={t.review} />
           ))}
         </div>
-        <div className="flex gap-6 justify-center flex-wrap">
+        <div className="flex gap-6 justify-center w-full">
           {row2.map((t) => (
             <TestimonialCard key={t.id} name={t.name} rating={t.rating} review={t.review} />
           ))}

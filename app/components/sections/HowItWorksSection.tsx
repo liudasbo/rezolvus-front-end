@@ -25,7 +25,7 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section className="bg-[#F6F6F5] w-full px-20 pt-40 pb-20 flex items-center gap-4">
+    <section className="bg-[#F6F6F5] w-full px-20 pt-40 pb-0 flex items-center gap-4">
       <div className="relative w-[633px] h-[556px] rounded-[32px] overflow-hidden shrink-0">
         <Image
           src="/images/how-it-works-photo.jpg"

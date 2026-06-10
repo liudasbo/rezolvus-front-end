@@ -50,7 +50,7 @@ export default function Hero() {
           <img
             src="/images/search-creature.svg"
             alt=""
-            className="absolute -bottom-8 right-[90px] w-[72px] pointer-events-none"
+            className="absolute -bottom-[25px] right-[194px] w-[72px] pointer-events-none"
           />
 
           {/* Dropdowns */}

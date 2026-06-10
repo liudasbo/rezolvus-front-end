@@ -1,16 +1,63 @@
-const areas = [
-  { title: "Anxiety & Stress", img: "/images/area-anxiety.svg" },
-  { title: "Physical Recovery", img: "/images/area-physical.svg" },
-  { title: "Sleep Problems", img: "/images/area-sleep.svg" },
-  { title: "Nutrition & Lifestyle", img: "/images/area-nutrition.svg" },
-  { title: "Burnout", img: "/images/area-burnout.svg" },
-  { title: "Relationship Problems", img: "/images/area-relationship.svg" },
+import React from "react";
+
+type Area = {
+  title: string;
+  img: string;
+  imgClass: string;
+  imgStyle: React.CSSProperties;
+};
+
+const areas: Area[] = [
+  {
+    title: "Anxiety & Stress",
+    img: "/images/area-anxiety.svg",
+    imgClass: "absolute w-[155px] h-[122px] pointer-events-none",
+    imgStyle: { left: "62px", top: "87px" },
+  },
+  {
+    title: "Physical Recovery",
+    img: "/images/area-physical.svg",
+    imgClass: "absolute pointer-events-none",
+    imgStyle: { inset: "55.02% -19.32% -14.83% 37.5%" },
+  },
+  {
+    title: "Sleep Problems",
+    img: "/images/area-sleep.svg",
+    imgClass: "absolute w-[150px] h-[119px] pointer-events-none",
+    imgStyle: { left: "55px", top: "110px" },
+  },
+  {
+    title: "Nutrition & Lifestyle",
+    img: "/images/area-nutrition.svg",
+    imgClass: "absolute pointer-events-none",
+    imgStyle: { inset: "45.45% -9.09% -9.18% 44.32%" },
+  },
+  {
+    title: "Burnout",
+    img: "/images/area-burnout.svg",
+    imgClass: "absolute pointer-events-none",
+    imgStyle: { inset: "63.64% -0.16% -0.13% 22.24%" },
+  },
+  {
+    title: "Relationship Problems",
+    img: "/images/area-relationship.svg",
+    imgClass: "absolute pointer-events-none",
+    imgStyle: { inset: "46.89% -4.37% -9.34% 47.4%" },
+  },
 ];
 
 export default function HealthAreasSection() {
   return (
     <section className="bg-[#013D47] w-full px-20 py-14 flex flex-col gap-12 relative overflow-hidden">
-      <div className="flex items-end justify-between w-full">
+      {/* Background decorative wave */}
+      <img
+        src="/images/health-areas-wave.svg"
+        alt=""
+        className="absolute pointer-events-none"
+        style={{ width: "1686px", height: "582px", top: "65px", left: "calc(50% - 843px)" }}
+      />
+
+      <div className="flex items-end justify-between w-full relative">
         <div className="flex flex-col gap-4 shrink-0">
           <p className="text-[#FB652B] text-xs font-semibold leading-6 uppercase">
             SUPPORT FOR EVERY NEED
@@ -25,7 +72,8 @@ export default function HealthAreasSection() {
           support faster.
         </p>
       </div>
-      <div className="flex gap-4 w-full">
+
+      <div className="flex gap-4 w-full relative">
         {areas.map((area) => (
           <div
             key={area.title}
@@ -38,7 +86,8 @@ export default function HealthAreasSection() {
             <img
               src={area.img}
               alt=""
-              className="absolute bottom-0 right-0 w-[155px] pointer-events-none"
+              className={area.imgClass}
+              style={area.imgStyle}
             />
           </div>
         ))}
