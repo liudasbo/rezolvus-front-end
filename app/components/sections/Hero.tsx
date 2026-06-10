@@ -1,5 +1,62 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
 import Header from "../Header";
+
+const dropdownOptions: Record<string, string[]> = {
+  Specialist: ["Psychologist", "Physiotherapist", "Therapist", "Wellness Coach", "Nutritionist"],
+  Location: ["Vilnius", "Kaunas", "Klaipėda", "Online"],
+  "Consultation type": ["In person", "Online", "Hybrid"],
+};
+
+function SearchDropdown({ label }: { label: string }) {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<string | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="bg-white/10 border border-[rgba(13,13,13,0.1)] rounded-full h-12 w-[185px] flex items-center justify-between px-5 py-2 text-[#1C1C1C] text-base font-normal leading-6 hover:bg-white/20 active:bg-white/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer"
+        aria-expanded={open}
+      >
+        <span className={`truncate ${selected ? "text-[#1C1C1C]" : "text-[#858482]"}`}>
+          {selected ?? label}
+        </span>
+        <img
+          src="/images/icon-caret-down.svg"
+          alt=""
+          className={`w-5 h-5 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {open && (
+        <div className="absolute top-[calc(100%+8px)] left-0 z-50 bg-white rounded-2xl shadow-lg py-2 min-w-full overflow-hidden">
+          {dropdownOptions[label]?.map((opt) => (
+            <button
+              key={opt}
+              onClick={() => { setSelected(opt); setOpen(false); }}
+              className={`w-full text-left px-4 py-2 text-sm leading-5 hover:bg-[#F6F6F5] transition-colors ${selected === opt ? "text-[#FB652B] font-medium" : "text-[#1C1C1C]"}`}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -55,21 +112,18 @@ export default function Hero() {
 
           {/* Dropdowns */}
           <div className="flex items-center gap-3">
-            {["Specialist", "Location", "Consultation type"].map((label) => (
-              <button
-                key={label}
-                className="bg-white/10 border border-[rgba(13,13,13,0.1)] rounded-full h-12 w-[185px] flex items-center justify-between px-5 py-2 text-[#1C1C1C] text-base font-normal leading-6"
-              >
-                <span className="truncate">{label}</span>
-                <img src="/images/icon-caret-down.svg" alt="" className="w-5 h-5 shrink-0" />
-              </button>
+            {Object.keys(dropdownOptions).map((label) => (
+              <SearchDropdown key={label} label={label} />
             ))}
           </div>
 
           {/* CTA */}
-          <button className="bg-[#FB652B] rounded-full h-12 px-6 flex items-center justify-center text-white text-base font-medium leading-6 whitespace-nowrap hover:bg-[#e85520] transition-colors shrink-0">
+          <Link
+            href="/find-specialists"
+            className="bg-[#FB652B] rounded-full h-12 px-6 flex items-center justify-center text-white text-base font-medium leading-6 whitespace-nowrap hover:bg-[#e85520] active:bg-[#d44a18] transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60"
+          >
             Find My Specialist
-          </button>
+          </Link>
         </div>
       </div>
 

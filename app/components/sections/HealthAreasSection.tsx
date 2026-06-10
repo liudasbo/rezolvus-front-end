@@ -77,7 +77,7 @@ export default function HealthAreasSection() {
         {areas.map((area) => (
           <div
             key={area.title}
-            className="bg-[#EDECEC] rounded-[24px] flex-1 min-w-0 h-[209px] pl-6 pr-4 py-4 flex items-start justify-between overflow-hidden relative"
+            className="bg-[#EDECEC] rounded-[24px] flex-1 min-w-0 h-[209px] pl-6 pr-4 py-4 flex items-start justify-between overflow-hidden relative hover:bg-[#E4E3E3] transition-colors cursor-pointer group"
           >
             <p className="text-black text-xl font-medium leading-6 capitalize flex-1 pr-4">
               {area.title}

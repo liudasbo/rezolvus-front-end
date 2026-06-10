@@ -21,9 +21,9 @@ function GlobeIcon() {
   );
 }
 
-function ChevronLeftIcon({ opacity }: { opacity?: number }) {
+function ChevronLeftIcon({ disabled }: { disabled?: boolean }) {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ opacity }}>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className={disabled ? "opacity-35" : ""}>
       <path d="M12.5 15L7.5 10L12.5 5" stroke="#0D0D0D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
@@ -76,11 +76,7 @@ export default function SpecialistCard({
               className="bg-white rounded-full px-3 py-1 flex items-center gap-2 text-sm font-normal leading-5 text-black whitespace-nowrap"
             >
               <img
-                src={
-                  type === "In person"
-                    ? "/images/icon-armchair.svg"
-                    : "/images/icon-laptop.svg"
-                }
+                src={type === "In person" ? "/images/icon-armchair.svg" : "/images/icon-laptop.svg"}
                 alt=""
                 className="w-4 h-4"
               />
@@ -131,11 +127,7 @@ export default function SpecialistCard({
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <img
-              src="/images/icon-users-three.svg"
-              alt=""
-              className="w-5 h-5 shrink-0"
-            />
+            <img src="/images/icon-users-three.svg" alt="" className="w-5 h-5 shrink-0" />
             <span className="text-[#2B2B2A] text-sm leading-5 whitespace-nowrap">
               {specialist.reviewsCount} reviews
             </span>
@@ -166,16 +158,12 @@ export default function SpecialistCard({
         <div className="flex items-end gap-2">
           <div className="flex-1 min-w-0 flex flex-col gap-1">
             <p className="text-black text-sm font-medium leading-5">Option</p>
-            <div className="bg-[rgba(13,13,13,0.05)] h-12 rounded-lg flex items-center px-4 gap-4">
+            <button className="bg-[rgba(13,13,13,0.05)] h-12 rounded-lg flex items-center px-4 gap-4 hover:bg-[rgba(13,13,13,0.08)] active:bg-[rgba(13,13,13,0.1)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013D47]/30 cursor-pointer w-full text-left">
               <p className="flex-1 min-w-0 text-[#1C1C1C] text-sm leading-5 truncate">
                 Select session option
               </p>
-              <img
-                src="/images/icon-caret-down.svg"
-                alt=""
-                className="w-5 h-5 shrink-0"
-              />
-            </div>
+              <img src="/images/icon-caret-down.svg" alt="" className="w-5 h-5 shrink-0" />
+            </button>
           </div>
           <div className="flex gap-2 shrink-0">
             <div className="bg-[rgba(13,13,13,0.05)] h-12 rounded-lg flex items-center justify-center gap-1 px-6 whitespace-nowrap">
@@ -197,14 +185,15 @@ export default function SpecialistCard({
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between text-sm leading-5">
             <span className="font-medium text-black">Next available</span>
-            <span className="text-[#676665] font-normal">
-              {nextAvailable.weekLabel}
-            </span>
+            <span className="text-[#676665] font-normal">{nextAvailable.weekLabel}</span>
           </div>
           <div className="flex items-center gap-2">
             {/* Prev arrow */}
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg opacity-35 cursor-not-allowed shrink-0">
-              <ChevronLeftIcon />
+            <button
+              disabled
+              className="w-8 h-8 flex items-center justify-center rounded-lg cursor-not-allowed shrink-0 focus-visible:outline-none"
+            >
+              <ChevronLeftIcon disabled />
             </button>
 
             {/* Days */}
@@ -217,30 +206,18 @@ export default function SpecialistCard({
                   onClick={() => d.available && setSelectedDay(d.day)}
                   disabled={isUnavailable}
                   className={[
-                    "flex-1 h-[52px] flex flex-col items-center justify-center rounded-lg transition-colors",
+                    "flex-1 h-[52px] flex flex-col items-center justify-center rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2",
                     isSelected
-                      ? "bg-[#FB652B]"
+                      ? "bg-[#FB652B] focus-visible:ring-[#FB652B]/60"
                       : isUnavailable
                       ? "bg-[#F6F6F5] opacity-50 cursor-not-allowed"
-                      : "bg-[rgba(13,13,13,0.05)] hover:bg-[rgba(13,13,13,0.08)]",
+                      : "bg-[rgba(13,13,13,0.05)] hover:bg-[rgba(13,13,13,0.08)] active:bg-[rgba(13,13,13,0.12)] cursor-pointer focus-visible:ring-[#013D47]/30",
                   ].join(" ")}
                 >
-                  <span
-                    className={[
-                      "text-base font-medium leading-6",
-                      isSelected ? "text-white" : "text-[#0D0D0D]",
-                    ].join(" ")}
-                  >
+                  <span className={["text-base font-medium leading-6", isSelected ? "text-white" : "text-[#0D0D0D]"].join(" ")}>
                     {d.day}
                   </span>
-                  <span
-                    className={[
-                      "text-sm leading-5",
-                      isSelected
-                        ? "text-white/80"
-                        : "text-[rgba(13,13,13,0.5)]",
-                    ].join(" ")}
-                  >
+                  <span className={["text-sm leading-5", isSelected ? "text-white/80" : "text-[rgba(13,13,13,0.5)]"].join(" ")}>
                     {d.dayName}
                   </span>
                 </button>
@@ -248,7 +225,7 @@ export default function SpecialistCard({
             })}
 
             {/* Next arrow */}
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[rgba(13,13,13,0.05)] transition-colors shrink-0">
+            <button className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[rgba(13,13,13,0.05)] active:bg-[rgba(13,13,13,0.1)] transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013D47]/30 cursor-pointer">
               <ChevronRightIcon />
             </button>
           </div>
@@ -261,15 +238,18 @@ export default function SpecialistCard({
               {row.map((time, tIdx) => {
                 if (!time) return <div key={tIdx} className="flex-1" />;
                 const isSelected = time !== "View All" && time === selectedTime;
+                const isViewAll = time === "View All";
                 return (
                   <button
                     key={time}
-                    onClick={() => time !== "View All" && setSelectedTime(time)}
+                    onClick={() => !isViewAll && setSelectedTime(time)}
                     className={[
-                      "w-[133px] shrink-0 py-2 flex items-center justify-center rounded-lg text-[#1C1C1C] text-sm leading-5 transition-colors",
+                      "w-[133px] shrink-0 py-2 flex items-center justify-center rounded-lg text-sm leading-5 transition-colors focus-visible:outline-none focus-visible:ring-2 cursor-pointer",
                       isSelected
-                        ? "bg-[rgba(13,13,13,0.05)] border-[1.5px] border-[#FB652B]"
-                        : "bg-[rgba(13,13,13,0.05)] hover:bg-[rgba(13,13,13,0.08)]",
+                        ? "bg-[rgba(13,13,13,0.05)] border-[1.5px] border-[#FB652B] text-[#1C1C1C] focus-visible:ring-[#FB652B]/60"
+                        : isViewAll
+                        ? "bg-transparent text-[#FB652B] font-medium hover:underline focus-visible:ring-[#FB652B]/40"
+                        : "bg-[rgba(13,13,13,0.05)] text-[#1C1C1C] hover:bg-[rgba(13,13,13,0.08)] active:bg-[rgba(13,13,13,0.12)] focus-visible:ring-[#013D47]/30",
                     ].join(" ")}
                   >
                     {time}
@@ -282,10 +262,10 @@ export default function SpecialistCard({
 
         {/* Action buttons */}
         <div className="flex gap-2 mt-auto">
-          <button className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-base font-medium leading-6 hover:bg-[#FB652B]/10 transition-colors">
+          <button className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-base font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
             View Profile
           </button>
-          <button className="flex-1 h-10 bg-[#FB652B] rounded-full text-white text-base font-medium leading-6 hover:bg-[#e85520] transition-colors">
+          <button className="flex-1 h-10 bg-[#FB652B] rounded-full text-white text-base font-medium leading-6 hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
             Book a Meeting
           </button>
         </div>

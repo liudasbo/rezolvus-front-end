@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CTASection() {
   return (
@@ -30,9 +31,12 @@ export default function CTASection() {
               We&apos;re here to help you feel better!
             </p>
           </div>
-          <button className="bg-[#FB652B] rounded-full h-14 px-8 flex items-center justify-center text-white text-base font-medium leading-6 hover:bg-[#e85520] transition-colors">
+          <Link
+            href="/find-specialists"
+            className="bg-[#FB652B] rounded-full h-14 px-8 flex items-center justify-center text-white text-base font-medium leading-6 hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60"
+          >
             Find My Specialist
-          </button>
+          </Link>
         </div>
       </div>
     </section>
