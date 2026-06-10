@@ -1,10 +1,10 @@
 const areas = [
-  { title: "Anxiety & Stress", img: "/images/area-anxiety.png" },
-  { title: "Physical Recovery", img: "/images/area-physical.png" },
-  { title: "Sleep Problems", img: "/images/area-sleep.png" },
-  { title: "Nutrition & Lifestyle", img: "/images/area-nutrition.png" },
-  { title: "Burnout", img: "/images/area-burnout.png" },
-  { title: "Relationship Problems", img: "/images/area-relationship.png" },
+  { title: "Anxiety & Stress", img: "/images/area-anxiety.svg" },
+  { title: "Physical Recovery", img: "/images/area-physical.svg" },
+  { title: "Sleep Problems", img: "/images/area-sleep.svg" },
+  { title: "Nutrition & Lifestyle", img: "/images/area-nutrition.svg" },
+  { title: "Burnout", img: "/images/area-burnout.svg" },
+  { title: "Relationship Problems", img: "/images/area-relationship.svg" },
 ];
 
 export default function HealthAreasSection() {
@@ -34,7 +34,7 @@ export default function HealthAreasSection() {
             <p className="text-black text-xl font-medium leading-6 capitalize flex-1 pr-4">
               {area.title}
             </p>
-            <img src="/images/icon-arrow-up-right.png" alt="" className="w-6 h-6 shrink-0" />
+            <img src="/images/icon-arrow-up-right.svg" alt="" className="w-6 h-6 shrink-0" />
             <img
               src={area.img}
               alt=""

@@ -20,7 +20,7 @@ export default function TickerSection() {
           {doubled.map((item, i) => (
             <div key={i} className="flex items-center gap-[68px] shrink-0">
               <span className="text-white text-[52px] font-medium leading-[74px]">{item}</span>
-              <img src="/images/ticker-dot.png" alt="" className="w-2.5 h-2.5 shrink-0" />
+              <img src="/images/ticker-dot.svg" alt="" className="w-2.5 h-2.5 shrink-0" />
             </div>
           ))}
         </div>

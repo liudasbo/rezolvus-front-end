@@ -6,7 +6,7 @@ export default function Header() {
       <div className="bg-white/5 backdrop-blur-md rounded-full px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="relative h-6 w-[106px] shrink-0">
-          <Image src="/images/logo-nav.png" alt="Rezolvus" fill className="object-contain" />
+          <Image src="/images/logo-nav.svg" alt="Rezolvus" fill className="object-contain" />
         </div>
 
         {/* Nav links */}

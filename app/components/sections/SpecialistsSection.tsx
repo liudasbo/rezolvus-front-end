@@ -44,15 +44,15 @@ const specialists = [
 ];
 
 const tagIcon: Record<string, string> = {
-  "In person": "/images/icon-armchair.png",
-  Online: "/images/icon-laptop.png",
+  "In person": "/images/icon-armchair.svg",
+  Online: "/images/icon-laptop.svg",
 };
 
 export default function SpecialistsSection() {
   return (
     <section className="bg-[#013D47] w-full px-20 py-[120px] flex flex-col gap-12 relative">
       <img
-        src="/images/spec-heart.png"
+        src="/images/spec-heart.svg"
         alt=""
         className="absolute top-[76px] right-[217px] w-[217px] pointer-events-none"
       />
@@ -67,9 +67,9 @@ export default function SpecialistsSection() {
           </h2>
         </div>
         <button className="border border-white rounded-full h-10 px-6 flex items-center gap-2 text-white text-base font-medium leading-6 hover:bg-white/10 transition-colors">
-          <img src="/images/icon-arrow-right.png" alt="" className="w-5 h-5" />
+          <img src="/images/icon-arrow-right.svg" alt="" className="w-5 h-5" />
           View All
-          <img src="/images/icon-arrow-right.png" alt="" className="w-5 h-5" />
+          <img src="/images/icon-arrow-right.svg" alt="" className="w-5 h-5" />
         </button>
       </div>
 
@@ -101,7 +101,7 @@ export default function SpecialistsSection() {
                   <span className="text-[rgba(13,13,13,0.65)] text-xs font-normal leading-5">
                     {s.role}
                   </span>
-                  <img src="/images/icon-dot.png" alt="" className="w-1 h-1" />
+                  <img src="/images/icon-dot.svg" alt="" className="w-1 h-1" />
                   <span className="text-[rgba(13,13,13,0.65)] text-xs font-normal leading-5">
                     {s.specialty}
                   </span>
@@ -111,7 +111,7 @@ export default function SpecialistsSection() {
                 {s.bio}
               </p>
               <div className="flex items-center gap-2">
-                <img src="/images/icon-star.png" alt="" className="w-5 h-5" />
+                <img src="/images/icon-star.svg" alt="" className="w-5 h-5" />
                 <div className="flex gap-1 text-base leading-6">
                   <span className="text-[#0D0D0D] font-medium">{s.rating}</span>
                   <span className="text-[rgba(13,13,13,0.35)] font-normal">({s.reviews})</span>
@@ -134,10 +134,10 @@ export default function SpecialistsSection() {
         </div>
         <div className="flex gap-3 shrink-0">
           <button className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white/10 transition-colors">
-            <img src="/images/icon-arrow-right.png" alt="Previous" className="w-5 h-5 rotate-180" />
+            <img src="/images/icon-arrow-right.svg" alt="Previous" className="w-5 h-5 rotate-180" />
           </button>
           <button className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white/10 transition-colors">
-            <img src="/images/icon-arrow-right.png" alt="Next" className="w-5 h-5" />
+            <img src="/images/icon-arrow-right.svg" alt="Next" className="w-5 h-5" />
           </button>
         </div>
       </div>

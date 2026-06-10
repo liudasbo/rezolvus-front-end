@@ -21,7 +21,7 @@ function TestimonialCard({
     <div className="bg-white rounded-[24px] p-5 flex flex-col gap-3 shrink-0 w-[308px]">
       <div className="flex gap-3 items-center">
         <img
-          src="/images/testimonial-avatar.png"
+          src="/images/testimonial-avatar.svg"
           alt={name}
           className="w-14 h-14 rounded-full shrink-0"
         />
@@ -30,7 +30,7 @@ function TestimonialCard({
           <div className="flex items-center gap-2">
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
-                <img key={i} src="/images/icon-star-small.png" alt="" className="w-4 h-4" />
+                <img key={i} src="/images/icon-star-small.svg" alt="" className="w-4 h-4" />
               ))}
             </div>
             <span className="text-[#0D0D0D] text-sm font-normal leading-5">{rating}</span>

@@ -2,17 +2,17 @@ const features = [
   {
     title: "Verified Specialists",
     body: "Every professional is carefully verified for safety and confidence.",
-    icon: "/images/icon-seal-check.png",
+    icon: "/images/icon-seal-check.svg",
   },
   {
     title: "Real Reviews",
     body: "Honest feedback from people like you helps you make the right choice.",
-    icon: "/images/icon-users-three.png",
+    icon: "/images/icon-users-three.svg",
   },
   {
     title: "Safe & Secure",
     body: "Your data and privacy are protected at every step of your journey.",
-    icon: "/images/icon-shield.png",
+    icon: "/images/icon-shield.svg",
   },
 ];
 

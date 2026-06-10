@@ -8,13 +8,13 @@ export default function CTASection() {
       </div>
 
       <img
-        src="/images/cta-heart.png"
+        src="/images/cta-heart.svg"
         alt=""
         className="absolute left-[calc(50%-450px)] top-[196px] w-[130px] pointer-events-none z-10"
       />
 
       <img
-        src="/images/cta-star.png"
+        src="/images/cta-star.svg"
         alt=""
         className="absolute right-[calc(50%-490px)] bottom-[200px] w-[130px] pointer-events-none z-10"
       />

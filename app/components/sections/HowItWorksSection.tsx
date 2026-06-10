@@ -40,22 +40,22 @@ export default function HowItWorksSection() {
           className="object-cover"
         />
         <img
-          src="/images/how-it-works-wave1.png"
+          src="/images/how-it-works-wave1.svg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         />
         <img
-          src="/images/how-it-works-wave2.png"
+          src="/images/how-it-works-wave2.svg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         />
         <img
-          src="/images/how-it-works-star.png"
+          src="/images/how-it-works-star.svg"
           alt=""
           className="absolute bottom-14 -left-3 w-[104px] pointer-events-none"
         />
         <img
-          src="/images/how-it-works-creature.png"
+          src="/images/how-it-works-creature.svg"
           alt=""
           className="absolute top-3 -right-3 w-[104px] pointer-events-none"
         />

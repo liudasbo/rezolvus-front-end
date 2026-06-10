@@ -42,13 +42,13 @@ export default function Hero() {
         <div className="relative bg-white backdrop-blur-xl rounded-full p-3 flex items-center gap-8">
           {/* Decorative bunny (top-left) */}
           <img
-            src="/images/search-bunny.png"
+            src="/images/search-bunny.svg"
             alt=""
             className="absolute -top-12 left-[82px] w-16 pointer-events-none"
           />
           {/* Decorative creature (bottom-right) */}
           <img
-            src="/images/search-creature.png"
+            src="/images/search-creature.svg"
             alt=""
             className="absolute -bottom-8 right-[90px] w-[72px] pointer-events-none"
           />
@@ -61,7 +61,7 @@ export default function Hero() {
                 className="bg-white/10 border border-[rgba(13,13,13,0.1)] rounded-full h-12 w-[185px] flex items-center justify-between px-5 py-2 text-[#1C1C1C] text-base font-normal leading-6"
               >
                 <span className="truncate">{label}</span>
-                <img src="/images/icon-caret-down.png" alt="" className="w-5 h-5 shrink-0" />
+                <img src="/images/icon-caret-down.svg" alt="" className="w-5 h-5 shrink-0" />
               </button>
             ))}
           </div>
@@ -85,7 +85,7 @@ export default function Hero() {
           {/* Stars */}
           <div className="flex items-center gap-1">
             {[1, 2, 3, 4, 5].map((i) => (
-              <img key={i} src="/images/icon-star-rating.png" alt="" className="w-5 h-5" />
+              <img key={i} src="/images/icon-star-rating.svg" alt="" className="w-5 h-5" />
             ))}
           </div>
           {/* Rating text */}

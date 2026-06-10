@@ -46,7 +46,7 @@ export default function Footer() {
       <div className="flex flex-col gap-8">
         <div className="relative w-full" style={{ aspectRatio: "115/26" }}>
           <img
-            src="/images/logo-footer.png"
+            src="/images/logo-footer.svg"
             alt="Rezolvus"
             className="w-full h-full object-contain object-left"
           />
