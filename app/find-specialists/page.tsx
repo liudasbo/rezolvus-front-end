@@ -15,7 +15,7 @@ export default function FindSpecialistsPage() {
       <FindSpecialistsHero searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
       {/* Filters + Results */}
-      <section className="bg-[#F6F6F5] px-20 pt-12 pb-40">
+      <section className="bg-[#F6F6F5] px-5 sm:px-8 lg:px-20 pt-12 pb-20 lg:pb-40">
         <SpecialistFilters activeFilters={activeFilters} onFilterChange={setActiveFilters} />
 
         <div className="mt-12">
