@@ -3,23 +3,26 @@ import Link from "next/link";
 
 export default function CTASection() {
   return (
-    <section className="bg-[#F6F6F5] w-full px-5 sm:px-10 xl:px-20 py-16 md:py-24 xl:py-40 flex items-center justify-center relative">
+    <section className="bg-[#F6F6F5] w-full px-5 sm:px-10 xl:px-20 py-16 md:py-24 xl:py-[160px] flex items-center justify-center relative">
+      {/* Background photo */}
       <div className="relative w-full h-[340px] sm:h-[420px] xl:h-[524px] rounded-[24px] xl:rounded-[40px] overflow-hidden">
         <Image src="/images/cta-bg.jpg" alt="" fill className="object-cover" />
       </div>
 
-      {/* Decoratives — desktop only */}
+      {/* Left decorative creature */}
       <img
-        src="/images/cta-heart.svg"
+        src="/images/cta-creature-left.svg"
         alt=""
         className="hidden xl:block absolute left-[320px] top-[196px] w-[130px] pointer-events-none z-10"
       />
+      {/* Right decorative creature */}
       <img
-        src="/images/cta-star.svg"
+        src="/images/cta-creature-right.svg"
         alt=""
-        className="hidden xl:block absolute right-[263px] top-[454px] w-[166px] pointer-events-none z-10"
+        className="hidden xl:block absolute right-[263px] bottom-[200px] w-[160px] pointer-events-none z-10"
       />
 
+      {/* Glass panel */}
       <div className="absolute inset-0 flex items-center justify-center px-5 sm:px-10 xl:px-20">
         <div className="bg-white/20 backdrop-blur-sm rounded-[24px] xl:rounded-[32px] px-6 sm:px-10 xl:px-14 py-8 xl:py-8 flex flex-col gap-6 xl:gap-12 items-center w-full max-w-[90%] sm:max-w-[560px] xl:max-w-[650px]">
           <div className="flex flex-col gap-3 xl:gap-4 items-center text-center">
@@ -27,8 +30,8 @@ export default function CTASection() {
               Ready to take the first step?
             </h2>
             <p className="text-[rgba(13,13,13,0.8)] text-sm sm:text-base xl:text-lg font-normal leading-6 xl:leading-7 max-w-[437px]">
-              Find the right support for your mental and physical health today.
-              We&apos;re here to help you feel better!
+              Explore certified specialists for rehabilitation, speech therapy,
+              movement recovery, and long-term wellbeing.
             </p>
           </div>
           <Link
