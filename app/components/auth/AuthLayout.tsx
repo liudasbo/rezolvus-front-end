@@ -27,7 +27,7 @@ export default function AuthLayout({ mode }: AuthLayoutProps) {
             className="relative block w-[124px] h-[28px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013d47]/40 rounded"
           >
             <Image
-              src="/images/logo-nav.svg"
+              src="/images/auth/auth-logo.svg"
               alt="Rezolvus"
               fill
               className="object-contain"
