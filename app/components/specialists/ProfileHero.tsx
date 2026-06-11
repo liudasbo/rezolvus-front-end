@@ -107,11 +107,11 @@ export default function ProfileHero({ specialist }: ProfileHeroProps) {
               <span className="text-[#2b2b2a] text-[14px] leading-5">{specialist.yearsExperience} of experience</span>
             </div>
             <div className="flex items-center gap-2">
-              <img src="/images/icon-star.svg" alt="" className="w-5 h-5 shrink-0" />
+              <img src="/images/icon-star.svg" alt="" width={20} height={20} className="w-5 h-5 shrink-0" />
               <span className="text-[#2b2b2a] text-[14px] leading-5">{specialist.rating} rating</span>
             </div>
             <div className="flex items-center gap-2">
-              <img src="/images/icon-users-three.svg" alt="" className="w-5 h-5 shrink-0" />
+              <img src="/images/icon-users-three.svg" alt="" width={20} height={20} className="w-5 h-5 shrink-0" />
               <span className="text-[#2b2b2a] text-[14px] leading-5">{specialist.reviewsCount} reviews</span>
             </div>
             <div className="flex items-center gap-2">

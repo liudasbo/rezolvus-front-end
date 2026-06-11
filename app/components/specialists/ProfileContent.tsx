@@ -156,32 +156,56 @@ export default function ProfileContent({ specialist }: ProfileContentProps) {
               </div>
             </div>
 
-            <div className="flex flex-col gap-3">
-              {visibleSessions.map((session) => (
-                <div
-                  key={session.id}
-                  className="bg-white rounded-[24px] p-6 flex gap-8 items-start"
-                >
-                  <div className="flex-1 min-w-0 flex flex-col gap-3">
-                    <p className="text-[#1c1c1c] text-[20px] font-medium leading-6">{session.name}</p>
-                    <p className="text-[#494947] text-[14px] leading-5">{session.description}</p>
-                  </div>
-                  <div className="bg-[#e4dece] rounded-[12px] px-4 py-3 flex flex-col items-center shrink-0 min-w-[80px] text-right">
-                    <span className="text-[#013d47] text-[14px] font-medium leading-5">{session.price}</span>
-                    <span className="text-[rgba(1,61,71,0.75)] text-[14px] leading-5">{session.duration}</span>
-                  </div>
+            {sessionTab === "Options" ? (
+              <>
+                <div className="flex flex-col gap-3">
+                  {visibleSessions.map((session) => (
+                    <div
+                      key={session.id}
+                      className="bg-white rounded-[24px] p-6 flex gap-8 items-start"
+                    >
+                      <div className="flex-1 min-w-0 flex flex-col gap-3">
+                        <p className="text-[#1c1c1c] text-[20px] font-medium leading-6">{session.name}</p>
+                        <p className="text-[#494947] text-[14px] leading-5">{session.description}</p>
+                      </div>
+                      <div className="bg-[#e4dece] rounded-[12px] px-4 py-3 flex flex-col items-center shrink-0 min-w-[80px] text-right">
+                        <span className="text-[#013d47] text-[14px] font-medium leading-5">{session.price}</span>
+                        <span className="text-[rgba(1,61,71,0.75)] text-[14px] leading-5">{session.duration}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            {specialist.sessions.length > 3 && (
-              <div className="flex justify-center">
-                <button
-                  onClick={() => setShowAllSessions((v) => !v)}
-                  className="text-[#fb652b] text-[16px] font-medium leading-6 hover:underline focus-visible:outline-none cursor-pointer"
-                >
-                  {showAllSessions ? "Show fewer sessions" : "View more sessions"}
-                </button>
+                {specialist.sessions.length > 3 && (
+                  <div className="flex justify-center">
+                    <button
+                      onClick={() => setShowAllSessions((v) => !v)}
+                      className="text-[#fb652b] text-[16px] font-medium leading-6 hover:underline focus-visible:outline-none cursor-pointer"
+                    >
+                      {showAllSessions ? "Show fewer sessions" : "View more sessions"}
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="bg-white rounded-[24px] p-6 flex flex-col gap-4">
+                <p className="text-[#1c1c1c] text-[16px] font-medium leading-6">Available session formats</p>
+                <div className="flex gap-3">
+                  {specialist.sessionTypes.map((type) => (
+                    <div
+                      key={type}
+                      className="bg-[rgba(13,13,13,0.05)] rounded-[12px] px-4 py-3 flex items-center gap-2"
+                    >
+                      <img
+                        src={type === "In person" ? "/images/icon-armchair.svg" : "/images/icon-laptop.svg"}
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="w-5 h-5 shrink-0"
+                      />
+                      <span className="text-[#1c1c1c] text-[14px] leading-5">{type}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </section>
