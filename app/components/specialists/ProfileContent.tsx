@@ -138,7 +138,7 @@ export default function ProfileContent({ specialist }: ProfileContentProps) {
               <h2 className="text-[#013d47] text-[24px] font-medium leading-8 whitespace-nowrap">
                 Session Options &amp; Type
               </h2>
-              <div className="bg-[rgba(13,13,13,0.05)] border border-[#dadad9] flex gap-1 p-1 rounded-[12px]">
+              <div className="bg-[rgba(13,13,13,0.05)] border border-[#dadad9] flex gap-1 p-1 rounded-[12px] overflow-x-auto no-scrollbar">
                 {(["Options", "Type"] as SessionTab[]).map((t) => (
                   <button
                     key={t}
