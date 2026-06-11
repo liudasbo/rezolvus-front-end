@@ -83,7 +83,7 @@ function FilterDropdown({ label, icon, options, selected, onSelect }: FilterDrop
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className={`backdrop-blur-[10px] border-[1.5px] rounded-full h-12 flex items-center gap-4 px-[14px] whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013D47]/30 ${
+        className={`backdrop-blur-[10px] border-[1.5px] rounded-full h-11 lg:h-12 flex items-center gap-3 lg:gap-4 px-3 lg:px-[14px] whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013D47]/30 ${
           selected
             ? "bg-[#013D47]/10 border-[#013D47]/30 hover:bg-[#013D47]/15"
             : "bg-white/10 border-[rgba(13,13,13,0.1)] hover:bg-white/20 active:bg-white/30"
@@ -91,7 +91,7 @@ function FilterDropdown({ label, icon, options, selected, onSelect }: FilterDrop
       >
         <div className="flex items-center gap-2">
           {icon}
-          <span className={`text-base font-normal leading-6 ${selected ? "text-[#013D47] font-medium" : "text-[#1C1C1C]"}`}>
+          <span className={`text-sm lg:text-base font-normal leading-6 ${selected ? "text-[#013D47] font-medium" : "text-[#1C1C1C]"}`}>
             {selected ?? label}
           </span>
         </div>
@@ -112,7 +112,7 @@ function FilterDropdown({ label, icon, options, selected, onSelect }: FilterDrop
       </button>
 
       {open && (
-        <div className="absolute top-[calc(100%+8px)] left-0 z-50 bg-white rounded-2xl shadow-lg py-2 min-w-full overflow-hidden">
+        <div className="absolute top-[calc(100%+8px)] left-0 z-50 bg-white rounded-2xl shadow-lg py-2 min-w-full max-w-[calc(100vw-40px)] overflow-hidden">
           {options.map((opt) => (
             <button
               key={opt}
@@ -147,9 +147,9 @@ export default function SpecialistFilters({ activeFilters, onFilterChange }: Spe
   }
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
       {/* Filter dropdowns */}
-      <div className="flex items-center gap-4">
+      <div className="flex flex-wrap gap-2 lg:gap-4">
         {filterDefs.map(({ label, icon, options }) => (
           <FilterDropdown
             key={label}
@@ -165,7 +165,7 @@ export default function SpecialistFilters({ activeFilters, onFilterChange }: Spe
       {/* More Filters button */}
       <button
         onClick={() => setMoreFiltersOpen((o) => !o)}
-        className={`bg-[#FB652B] rounded-full h-12 flex items-center gap-2 pl-3 pr-5 text-white text-base font-medium leading-6 whitespace-nowrap hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer ${moreFiltersOpen ? "ring-2 ring-[#FB652B]/60" : ""}`}
+        className={`w-full sm:w-auto bg-[#FB652B] rounded-full h-12 flex items-center justify-center gap-2 pl-3 pr-5 text-white text-base font-medium leading-6 whitespace-nowrap hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer shrink-0 ${moreFiltersOpen ? "ring-2 ring-[#FB652B]/60" : ""}`}
       >
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M2.5 5H17.5M2.5 10H17.5M2.5 15H17.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
