@@ -42,15 +42,15 @@ export default function SpecialistList({ searchQuery, activeFilters }: Specialis
   return (
     <div className="flex flex-col gap-4">
       {/* Results header */}
-      <div className="flex items-end justify-between h-10">
-        <p className="text-[#013D47] text-[24px] font-medium leading-8 whitespace-nowrap">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <p className="text-[#013D47] text-[18px] sm:text-[20px] lg:text-[24px] font-medium leading-8">
           {sorted.length} specialist{sorted.length !== 1 ? "s" : ""} found
           {searchQuery.trim() ? ` for "${searchQuery.trim()}"` : " — browse all"}
         </p>
         <div className="relative">
           <button
             onClick={() => setSortOpen((o) => !o)}
-            className="backdrop-blur-[10px] bg-white/10 border-[1.5px] border-[rgba(13,13,13,0.1)] rounded-full h-10 flex items-center gap-2 pl-5 pr-[14px] text-[#1C1C1C] text-base font-normal leading-6 whitespace-nowrap hover:bg-white/20 active:bg-white/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013D47]/30 cursor-pointer"
+            className="backdrop-blur-[10px] bg-white/10 border-[1.5px] border-[rgba(13,13,13,0.1)] rounded-full h-10 flex items-center gap-2 pl-5 pr-[14px] text-[#1C1C1C] text-sm lg:text-base font-normal leading-6 whitespace-nowrap hover:bg-white/20 active:bg-white/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013D47]/30 cursor-pointer"
             aria-expanded={sortOpen}
           >
             {sortOrder}
