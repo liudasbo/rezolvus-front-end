@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import type { Specialist } from "@/app/data/specialists";
 
 function CertificateIcon() {
@@ -150,9 +151,12 @@ export default function SpecialistCard({
 
         {/* Action buttons — mobile/tablet only (xl+ version lives in booking column) */}
         <div className="flex gap-2 xl:hidden">
-          <button className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-sm font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
+          <Link
+            href={`/specialists/${specialist.slug}`}
+            className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-sm font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 flex items-center justify-center"
+          >
             View Profile
-          </button>
+          </Link>
           <button className="flex-1 h-10 bg-[#FB652B] rounded-full text-white text-sm font-medium leading-6 hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
             Book a Meeting
           </button>
@@ -269,9 +273,12 @@ export default function SpecialistCard({
 
         {/* Action buttons — desktop (xl+) */}
         <div className="flex gap-2 mt-auto">
-          <button className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-sm font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
+          <Link
+            href={`/specialists/${specialist.slug}`}
+            className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-sm font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 flex items-center justify-center"
+          >
             View Profile
-          </button>
+          </Link>
           <button className="flex-1 h-10 bg-[#FB652B] rounded-full text-white text-sm font-medium leading-6 hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
             Book a Meeting
           </button>
