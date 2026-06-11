@@ -40,6 +40,10 @@
   to { transform: translateX(-50%); }
 }
 
+html {
+  overflow-x: hidden;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }

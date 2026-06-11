@@ -48,7 +48,7 @@ const areas: Area[] = [
 
 export default function HealthAreasSection() {
   return (
-    <section className="bg-[#013D47] w-full px-20 py-14 flex flex-col gap-12 relative overflow-hidden">
+    <section className="bg-[#013D47] w-full px-5 sm:px-10 xl:px-20 py-10 lg:py-14 flex flex-col gap-8 lg:gap-12 relative overflow-hidden">
       {/* Background decorative wave */}
       <img
         src="/images/health-areas-wave.svg"
@@ -57,32 +57,32 @@ export default function HealthAreasSection() {
         style={{ width: "1686px", height: "582px", top: "65px", left: "calc(50% - 843px)" }}
       />
 
-      <div className="flex items-end justify-between w-full relative">
+      <div className="flex flex-col md:flex-row md:items-end justify-between w-full relative gap-4 md:gap-8">
         <div className="flex flex-col gap-4 shrink-0">
           <p className="text-[#FB652B] text-xs font-semibold leading-6 uppercase">
             SUPPORT FOR EVERY NEED
           </p>
-          <h2 className="text-white text-[40px] font-semibold leading-[48px] tracking-[-0.8px] capitalize w-[445px]">
+          <h2 className="text-white text-[28px] sm:text-[32px] xl:text-[40px] font-semibold leading-[1.2] xl:leading-[48px] tracking-[-0.8px] capitalize max-w-[445px]">
             Health &amp; Wellness Popular Support Areas
           </h2>
         </div>
-        <p className="text-white/80 text-lg font-normal leading-7 w-[494px]">
+        <p className="text-white/80 text-base lg:text-lg font-normal leading-7 max-w-full md:max-w-[400px] xl:max-w-[494px]">
           Whether you&apos;re dealing with stress, physical pain, burnout, or simply
           looking to improve your well-being — Rezolvus helps you find the right
           support faster.
         </p>
       </div>
 
-      <div className="flex gap-4 w-full relative">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4 w-full relative">
         {areas.map((area) => (
           <div
             key={area.title}
-            className="bg-[#EDECEC] rounded-[24px] flex-1 min-w-0 h-[209px] pl-6 pr-4 py-4 flex items-start justify-between overflow-hidden relative hover:bg-[#E4E3E3] transition-colors cursor-pointer group"
+            className="bg-[#EDECEC] rounded-[24px] h-[150px] sm:h-[170px] lg:h-[209px] pl-4 lg:pl-6 pr-3 lg:pr-4 py-4 flex items-start justify-between overflow-hidden relative hover:bg-[#E4E3E3] transition-colors cursor-pointer group"
           >
-            <p className="text-black text-xl font-medium leading-6 capitalize flex-1 pr-4">
+            <p className="text-black text-base lg:text-xl font-medium leading-6 capitalize flex-1 pr-2">
               {area.title}
             </p>
-            <img src="/images/icon-arrow-up-right.svg" alt="" className="w-6 h-6 shrink-0" />
+            <img src="/images/icon-arrow-up-right.svg" alt="" className="w-5 h-5 lg:w-6 lg:h-6 shrink-0" />
             <img
               src={area.img}
               alt=""

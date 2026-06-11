@@ -61,11 +61,11 @@ const tagIcon: Record<string, string> = {
 
 export default function SpecialistsSection() {
   return (
-    <section className="bg-[#013D47] w-full px-20 pt-[120px] pb-[88px] flex flex-col gap-12 relative">
+    <section className="bg-[#013D47] w-full px-5 sm:px-10 xl:px-20 pt-16 md:pt-20 xl:pt-[120px] pb-12 xl:pb-[88px] flex flex-col gap-8 lg:gap-12 relative overflow-hidden">
       <img
         src="/images/spec-heart.svg"
         alt=""
-        className="absolute top-[76px] right-[286px] w-[217px] pointer-events-none"
+        className="hidden xl:block absolute top-[76px] right-[286px] w-[217px] pointer-events-none"
       />
 
       <div className="flex items-end justify-between w-full">
@@ -73,32 +73,33 @@ export default function SpecialistsSection() {
           <p className="text-[#FB652B] text-xs font-semibold leading-6 uppercase">
             EXPERTS YOU CAN TRUST
           </p>
-          <h2 className="text-white text-[40px] font-semibold leading-[48px] tracking-[-0.8px] capitalize">
+          <h2 className="text-white text-[28px] sm:text-[32px] xl:text-[40px] font-semibold leading-[1.2] xl:leading-[48px] tracking-[-0.8px] capitalize">
             Top Rated Specialists
           </h2>
         </div>
         <Link
           href="/find-specialists"
-          className="border-[1.5px] border-white rounded-full h-10 pl-6 pr-4 flex items-center gap-2 text-white text-base font-medium leading-6 hover:bg-white/10 active:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          className="border-[1.5px] border-white rounded-full h-10 pl-4 sm:pl-6 pr-3 sm:pr-4 flex items-center gap-2 text-white text-sm sm:text-base font-medium leading-6 hover:bg-white/10 active:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 shrink-0"
         >
           View All
           <img src="/images/icon-arrow-right.svg" alt="" className="w-5 h-5" />
         </Link>
       </div>
 
-      <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+      {/* Scrollable card row — full-bleed on mobile */}
+      <div className="-mx-5 sm:-mx-10 xl:mx-0 px-5 sm:px-10 xl:px-0 flex gap-4 overflow-x-auto no-scrollbar pb-2">
         {specialists.map((s, idx) => (
           <div
             key={`${s.name}-${idx}`}
-            className="bg-white rounded-[24px] p-2 flex flex-col gap-4 shrink-0 w-[308px]"
+            className="bg-white rounded-[24px] p-2 flex flex-col gap-4 shrink-0 w-[260px] sm:w-[280px] xl:w-[308px]"
           >
-            <div className="relative h-[290px] rounded-[16px] overflow-hidden">
+            <div className="relative h-[240px] sm:h-[260px] xl:h-[290px] rounded-[16px] overflow-hidden">
               <Image src={s.photo} alt={s.name} fill className="object-cover" />
               <div className="absolute top-3 left-3 flex gap-2">
                 {s.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-white rounded-full px-3 py-1 text-sm font-normal leading-5 text-black flex items-center gap-2"
+                    className="bg-white rounded-full px-2 sm:px-3 py-1 text-xs sm:text-sm font-normal leading-5 text-black flex items-center gap-1 sm:gap-2"
                   >
                     <img src={tagIcon[tag]} alt="" className="w-4 h-4" />
                     {tag}
@@ -109,7 +110,7 @@ export default function SpecialistsSection() {
 
             <div className="flex flex-col gap-3 px-3 pb-2">
               <div className="flex flex-col gap-1">
-                <p className="text-black text-xl font-medium leading-6 capitalize">{s.name}</p>
+                <p className="text-black text-lg xl:text-xl font-medium leading-6 capitalize">{s.name}</p>
                 <div className="flex items-center gap-2">
                   <span className="text-[rgba(13,13,13,0.65)] text-xs font-normal leading-5">
                     {s.role}
