@@ -34,7 +34,7 @@ const rightCards: FeatureCard[] = [
 
 function FeatureCard({ title, body, icon }: FeatureCard) {
   return (
-    <div className="bg-white rounded-[24px] h-[264px] px-6 pt-6 pb-5 flex flex-col justify-between items-start">
+    <div className="bg-white rounded-[24px] min-h-[264px] px-6 pt-6 pb-5 flex flex-col justify-between items-start">
       <div className="bg-[#013D47] w-[72px] h-[72px] rounded-[12px] flex items-center justify-center shrink-0">
         <img src={icon} alt="" className="w-10 h-10" />
       </div>
@@ -76,7 +76,7 @@ export default function FeaturesSection() {
             src="/images/features-center-photo.jpg"
             alt=""
             fill
-            className="object-cover rounded-[24px]"
+            className="object-cover"
           />
           <img
             src="/images/features-wave.png"
