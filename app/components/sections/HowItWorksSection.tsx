@@ -3,30 +3,31 @@ import Image from "next/image";
 const steps = [
   {
     num: "01",
-    title: "Tell us what you need",
-    body: "Share how you feel and what kind of support you're looking for.",
+    title: "Tell us what support you need",
+    body: "Speech therapy, rehabilitation, physiotherapy, educational support, or wellness services.",
   },
   {
     num: "02",
-    title: "Explore specialists",
-    body: "Browse verified professionals matched to your needs.",
+    title: "Explore verified specialists",
+    body: "Compare experience, specializations, languages, and availability.",
   },
   {
     num: "03",
     title: "Choose the right fit",
-    body: "Compare profiles, reviews, and expertise to find your perfect match.",
+    body: "Book online or in-person sessions with trusted professionals.",
   },
   {
     num: "04",
-    title: "Book your session",
-    body: "Pick a time that works for you and book instantly online or in-person.",
+    title: "Begin your recovery or development journey",
+    body: "Receive personalized support for yourself, your child, or your family.",
   },
 ];
 
 export default function HowItWorksSection() {
   return (
-    <section className="bg-[#F6F6F5] w-full px-5 sm:px-10 xl:px-20 pt-16 md:pt-24 xl:pt-40 pb-0 flex flex-col lg:flex-row items-center gap-8 lg:gap-4">
-      <div className="relative w-full lg:w-[633px] lg:shrink-0 h-[280px] sm:h-[380px] lg:h-[556px] rounded-[32px] overflow-hidden">
+    <section className="bg-[#F6F6F5] w-full px-5 sm:px-10 xl:px-20 pt-16 md:pt-24 xl:pt-[160px] pb-0 flex flex-col lg:flex-row items-center gap-8 lg:gap-4">
+      {/* Photo card */}
+      <div className="relative w-full lg:w-[524px] lg:shrink-0 h-[280px] sm:h-[380px] lg:h-[556px] rounded-[32px] overflow-hidden">
         <Image
           src="/images/how-it-works-photo.jpg"
           alt="Your path to wellness"
@@ -34,7 +35,7 @@ export default function HowItWorksSection() {
           className="object-cover"
         />
         <Image
-          src="/images/how-it-works-overlay.png"
+          src="/images/how-it-works-overlay-2.png"
           alt=""
           fill
           className="object-cover"
@@ -49,19 +50,24 @@ export default function HowItWorksSection() {
           alt=""
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         />
+        {/* Bottom-left star creature */}
         <img
-          src="/images/how-it-works-star.svg"
+          src="/images/how-it-works-star-2.svg"
           alt=""
           className="absolute bottom-14 -left-3 w-[80px] lg:w-[104px] pointer-events-none"
         />
+        {/* Top-right blob creature */}
         <img
           src="/images/how-it-works-creature.svg"
           alt=""
           className="absolute top-3 -right-3 w-[80px] lg:w-[104px] pointer-events-none"
         />
+        {/* Photo heading */}
         <div className="absolute top-6 left-6 lg:left-8 z-10">
-          <h2 className="text-white text-[28px] sm:text-[32px] xl:text-[40px] font-semibold leading-[1.2] xl:leading-[48px] tracking-[-0.8px] capitalize">
-            Your Path <br />to Wellness
+          <h2 className="text-white text-[22px] sm:text-[28px] xl:text-[40px] font-semibold leading-[1.2] xl:leading-[48px] tracking-[-0.8px] capitalize max-w-[260px] xl:max-w-none">
+            Your Path <br />
+            to rehabilitation, <br />
+            development, &amp; wellbeing.
           </h2>
         </div>
         <p className="absolute bottom-7 left-6 lg:left-8 z-10 text-white text-xs font-semibold uppercase leading-6">
@@ -69,10 +75,14 @@ export default function HowItWorksSection() {
         </p>
       </div>
 
-      <div className="w-full lg:flex-1 flex flex-col gap-6 lg:gap-0 lg:justify-between lg:h-[556px] lg:pl-16 py-4 lg:py-16">
+      {/* Steps */}
+      <div className="w-full lg:flex-1 flex flex-col gap-6 lg:gap-8 lg:pl-[64px] py-4 lg:py-[64px]">
+        <p className="hidden lg:block text-[#FB652B] text-xs font-semibold leading-6 uppercase">
+          HOW IT WORKS
+        </p>
         {steps.map((step) => (
           <div key={step.num} className="flex items-center gap-5 lg:gap-8">
-            <span className="text-[#67CDCD] text-[48px] sm:text-[60px] lg:text-[72px] font-semibold leading-[1] lg:leading-[69px] tracking-[-2px] lg:tracking-[-2.16px] w-[64px] sm:w-[80px] lg:w-[90px] shrink-0">
+            <span className="text-[#67CDCD] text-[48px] sm:text-[60px] lg:text-[72px] font-semibold leading-[1] tracking-[-2px] lg:tracking-[-2.16px] w-[64px] sm:w-[80px] lg:w-[90px] shrink-0">
               {step.num}
             </span>
             <div className="flex flex-col gap-1">
