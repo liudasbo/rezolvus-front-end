@@ -59,9 +59,9 @@ export default function SpecialistCard({
   const { nextAvailable } = specialist;
 
   return (
-    <div className="bg-white rounded-[24px] p-2 flex gap-4 items-stretch h-[416px]">
+    <div className="bg-white rounded-[24px] p-2 flex flex-col sm:flex-row items-stretch gap-4">
       {/* ── Photo column ── */}
-      <div className="w-[340px] shrink-0 relative rounded-[16px] overflow-hidden">
+      <div className="w-full h-[200px] sm:w-[180px] sm:h-auto md:w-[240px] xl:w-[340px] shrink-0 relative rounded-[16px] overflow-hidden">
         <Image
           src={specialist.photo}
           alt={specialist.name}
@@ -69,16 +69,16 @@ export default function SpecialistCard({
           className="object-cover"
         />
         {/* Session type badges */}
-        <div className="absolute top-3 left-3 flex gap-2">
+        <div className="absolute top-3 left-3 flex gap-2 flex-wrap">
           {specialist.sessionTypes.map((type) => (
             <span
               key={type}
-              className="bg-white rounded-full px-3 py-1 flex items-center gap-2 text-sm font-normal leading-5 text-black whitespace-nowrap"
+              className="bg-white rounded-full px-2 xl:px-3 py-1 flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-normal leading-5 text-black whitespace-nowrap"
             >
               <img
                 src={type === "In person" ? "/images/icon-armchair.svg" : "/images/icon-laptop.svg"}
                 alt=""
-                className="w-4 h-4"
+                className="w-3 xl:w-4 h-3 xl:h-4"
               />
               {type}
             </span>
@@ -86,11 +86,11 @@ export default function SpecialistCard({
         </div>
       </div>
 
-      {/* ── Info column ── */}
-      <div className="w-[304px] shrink-0 flex flex-col justify-between px-3 py-4">
+      {/* ── Info + actions column (always visible) ── */}
+      <div className="flex-1 min-w-0 flex flex-col justify-between px-3 py-4 gap-3 xl:w-[304px] xl:flex-none">
         {/* Name + specializations */}
         <div className="flex flex-col gap-1">
-          <p className="text-black text-[24px] font-medium leading-8">
+          <p className="text-black text-[18px] sm:text-[20px] xl:text-[24px] font-medium leading-7 xl:leading-8">
             {specialist.name}
           </p>
           <div className="flex flex-wrap items-center gap-x-2">
@@ -108,12 +108,12 @@ export default function SpecialistCard({
         </div>
 
         {/* Bio */}
-        <p className="text-[rgba(13,13,13,0.7)] text-sm leading-5 overflow-hidden">
+        <p className="text-[rgba(13,13,13,0.7)] text-sm leading-5 line-clamp-3 xl:line-clamp-none">
           {specialist.bio}
         </p>
 
         {/* Stats */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 xl:gap-2">
           <div className="flex items-center gap-2">
             <CertificateIcon />
             <span className="text-[#2B2B2A] text-sm leading-5 whitespace-nowrap">
@@ -141,19 +141,29 @@ export default function SpecialistCard({
         </div>
 
         {/* Price */}
-        <p className="text-[#013D47] text-[24px] font-medium leading-8">
+        <p className="text-[#013D47] text-[20px] xl:text-[24px] font-medium leading-8">
           from €{specialist.priceFrom}{" "}
           <span className="text-[rgba(1,61,71,0.75)] text-sm font-normal leading-5">
             /session
           </span>
         </p>
+
+        {/* Action buttons — mobile/tablet only (xl+ version lives in booking column) */}
+        <div className="flex gap-2 xl:hidden">
+          <button className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-sm font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
+            View Profile
+          </button>
+          <button className="flex-1 h-10 bg-[#FB652B] rounded-full text-white text-sm font-medium leading-6 hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
+            Book a Meeting
+          </button>
+        </div>
       </div>
 
-      {/* ── Vertical divider ── */}
-      <div className="self-stretch w-px bg-[rgba(13,13,13,0.08)] shrink-0" />
+      {/* ── Vertical divider — xl+ only ── */}
+      <div className="hidden xl:block self-stretch w-px bg-[rgba(13,13,13,0.08)] shrink-0" />
 
-      {/* ── Right booking column ── */}
-      <div className="flex-1 min-w-0 flex flex-col gap-4 pr-4 py-4">
+      {/* ── Right booking column — xl+ only ── */}
+      <div className="hidden xl:flex flex-1 min-w-0 flex-col gap-4 pr-4 py-4">
         {/* Session option + time + price pills */}
         <div className="flex items-end gap-2">
           <div className="flex-1 min-w-0 flex flex-col gap-1">
@@ -188,7 +198,6 @@ export default function SpecialistCard({
             <span className="text-[#676665] font-normal">{nextAvailable.weekLabel}</span>
           </div>
           <div className="flex items-center gap-2">
-            {/* Prev arrow */}
             <button
               disabled
               className="w-8 h-8 flex items-center justify-center rounded-lg cursor-not-allowed shrink-0 focus-visible:outline-none"
@@ -196,7 +205,6 @@ export default function SpecialistCard({
               <ChevronLeftIcon disabled />
             </button>
 
-            {/* Days */}
             {nextAvailable.dates.map((d) => {
               const isSelected = d.day === selectedDay;
               const isUnavailable = !d.available;
@@ -224,7 +232,6 @@ export default function SpecialistCard({
               );
             })}
 
-            {/* Next arrow */}
             <button className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[rgba(13,13,13,0.05)] active:bg-[rgba(13,13,13,0.1)] transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013D47]/30 cursor-pointer">
               <ChevronRightIcon />
             </button>
@@ -260,7 +267,7 @@ export default function SpecialistCard({
           ))}
         </div>
 
-        {/* Action buttons */}
+        {/* Action buttons — desktop (xl+) */}
         <div className="flex gap-2 mt-auto">
           <button className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-base font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
             View Profile
