@@ -13,13 +13,19 @@ const navLinks = [
   { label: "About", href: "#" },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  variant?: "light" | "dark";
+}
+
+export default function Header({ variant = "light" }: HeaderProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const pillBg = variant === "dark" ? "bg-[#013d47]" : "bg-white/5 backdrop-blur-md";
+
   return (
     <header className="absolute top-4 left-4 right-4 z-20">
-      <div className="bg-white/5 backdrop-blur-md rounded-full px-5 py-3 flex items-center justify-between">
+      <div className={`${pillBg} rounded-full px-5 py-3 flex items-center justify-between`}>
         {/* Logo */}
         <Link
           href="/"
@@ -96,7 +102,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden mt-2 bg-white/10 backdrop-blur-md rounded-[24px] px-6 py-6 flex flex-col gap-5">
+        <div className={`lg:hidden mt-2 ${variant === "dark" ? "bg-[#013d47]" : "bg-white/10 backdrop-blur-md"} rounded-[24px] px-6 py-6 flex flex-col gap-5`}>
           <nav className="flex flex-col gap-4">
             {navLinks.map(({ label, href }) => {
               const isActive = href !== "#" && pathname === href;
