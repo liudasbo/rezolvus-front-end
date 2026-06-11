@@ -61,7 +61,7 @@ export default function SpecialistCard({
   return (
     <div className="bg-white rounded-[24px] p-2 flex flex-col sm:flex-row items-stretch gap-4">
       {/* ── Photo column ── */}
-      <div className="w-full h-[200px] sm:w-[180px] sm:h-auto md:w-[240px] xl:w-[340px] shrink-0 relative rounded-[16px] overflow-hidden">
+      <div className="w-full h-[200px] sm:w-[180px] sm:h-auto sm:min-h-[200px] md:w-[240px] xl:w-[340px] shrink-0 relative rounded-[16px] overflow-hidden">
         <Image
           src={specialist.photo}
           alt={specialist.name}
@@ -269,10 +269,10 @@ export default function SpecialistCard({
 
         {/* Action buttons — desktop (xl+) */}
         <div className="flex gap-2 mt-auto">
-          <button className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-base font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
+          <button className="flex-1 h-10 border-[1.5px] border-[#FB652B] rounded-full text-[#FB652B] text-sm font-medium leading-6 hover:bg-[#FB652B]/10 active:bg-[#FB652B]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
             View Profile
           </button>
-          <button className="flex-1 h-10 bg-[#FB652B] rounded-full text-white text-base font-medium leading-6 hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
+          <button className="flex-1 h-10 bg-[#FB652B] rounded-full text-white text-sm font-medium leading-6 hover:bg-[#e85520] active:bg-[#d44a18] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB652B]/60 cursor-pointer">
             Book a Meeting
           </button>
         </div>
