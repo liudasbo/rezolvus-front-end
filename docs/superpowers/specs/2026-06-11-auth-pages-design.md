@@ -180,21 +180,21 @@ Props: `role: "seeking" | "specialist"`
 
 ## Assets
 
-Download from Figma API URLs and save to `public/images/auth/`:
+**Note:** Figma API asset URLs expire after 7 days. During implementation, call `get_design_context` on node `44:9065` again to get fresh download URLs before fetching assets.
 
-| File | Source (Figma API asset) | Description |
-|---|---|---|
-| `auth-bg-gradient.png` | `imgGroup66` | Right panel gradient background |
-| `auth-noise.png` | `imgNoiseTexture` | Noise texture overlay (8% opacity) |
-| `auth-creature-teal.png` | `imgBlue` | Teal blob creature |
-| `auth-creature-bg.png` | `imgIllustrationBackgroundContainer` | Illustration bg shape |
-| `auth-creature-cream.png` | `imgIllustrationContainer` | Cream heart creature |
-| `auth-icon-google.png` | `imgGroup` | Google "G" icon |
-| `auth-icon-apple.png` | `imgVector` | Apple logo icon |
+Download and save to `public/images/auth/`:
+
+| File | Format | Source variable | Description |
+|---|---|---|---|
+| `auth-bg-gradient.png` | raster PNG | `imgGroup66` | Right panel gradient background |
+| `auth-noise.png` | raster PNG | `imgNoiseTexture` | Noise texture overlay (8% opacity) |
+| `auth-creature-teal.png` | raster PNG | `imgBlue` | Teal blob creature (top of right panel) |
+| `auth-creature-bg.png` | raster PNG | `imgIllustrationBackgroundContainer` | Illustration bg shape (center) |
+| `auth-creature-cream.png` | raster PNG | `imgIllustrationContainer` | Cream heart creature (bottom right) |
+| `auth-icon-google.svg` | SVG | `imgGroup` | Google "G" icon for social button |
+| `auth-icon-apple.svg` | SVG | `imgVector` | Apple logo icon for social button |
 
 Reuse existing: `/images/logo-nav.svg`
-
-After download, rename `.png` files that are actually SVG content to `.svg` (follow project convention).
 
 ---
 
