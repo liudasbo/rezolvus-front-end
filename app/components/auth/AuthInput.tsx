@@ -4,7 +4,7 @@ interface AuthInputProps {
   placeholder: string;
   value: string;
   onChange: (value: string) => void;
-  type?: string;
+  type?: "text" | "email" | "tel" | "search" | "url" | "number";
   error?: string;
 }
 
