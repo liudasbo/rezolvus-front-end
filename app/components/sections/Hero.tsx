@@ -91,8 +91,9 @@ export default function Hero() {
             without the stress
           </h1>
           <p className="text-white font-normal leading-6 lg:leading-[27px] text-sm sm:text-base lg:text-lg max-w-[300px] sm:max-w-[460px] lg:max-w-[601px]">
-            Discover verified psychologists, physiotherapists, wellness specialists,
-            and more — all in one modern platform designed around trust and simplicity.
+            Connect with trusted speech therapists, physiotherapists, occupational
+            specialists, rehabilitation experts, and wellness professionals for
+            children and adults.
           </p>
         </div>
 
