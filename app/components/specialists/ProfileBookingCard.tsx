@@ -6,8 +6,20 @@ import type { Specialist } from "@/app/data/specialists";
 
 function ChevronLeftIcon({ disabled }: { disabled?: boolean }) {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className={disabled ? "opacity-35" : ""}>
-      <path d="M12.5 15L7.5 10L12.5 5" stroke="#0D0D0D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      className={disabled ? "opacity-35" : ""}
+    >
+      <path
+        d="M12.5 15L7.5 10L12.5 5"
+        stroke="#0D0D0D"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -15,7 +27,13 @@ function ChevronLeftIcon({ disabled }: { disabled?: boolean }) {
 function ChevronRightIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M7.5 5L12.5 10L7.5 15" stroke="#0D0D0D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M7.5 5L12.5 10L7.5 15"
+        stroke="#0D0D0D"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -23,8 +41,17 @@ function ChevronRightIcon() {
 function ShieldCheckIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M10 2L3.5 4.5V9.5C3.5 13.09 6.24 16.45 10 17.5C13.76 16.45 16.5 13.09 16.5 9.5V4.5L10 2Z" fill="#013d47" />
-      <path d="M7.5 10L9.5 12L12.5 8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M10 2L3.5 4.5V9.5C3.5 13.09 6.24 16.45 10 17.5C13.76 16.45 16.5 13.09 16.5 9.5V4.5L10 2Z"
+        fill="#013d47"
+      />
+      <path
+        d="M7.5 10L9.5 12L12.5 8"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -41,8 +68,17 @@ function LaptopIcon() {
 function ArmchairIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M4 7V5a4 4 0 0 1 8 0v2" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
-      <path d="M2 7h12v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7Z" stroke="currentColor" strokeWidth="1.25" />
+      <path
+        d="M4 7V5a4 4 0 0 1 8 0v2"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+      <path
+        d="M2 7h12v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7Z"
+        stroke="currentColor"
+        strokeWidth="1.25"
+      />
     </svg>
   );
 }
@@ -54,9 +90,22 @@ interface ProfileBookingCardProps {
 export default function ProfileBookingCard({ specialist }: ProfileBookingCardProps) {
   const { nextAvailable, sessionTypes, sessions } = specialist;
 
-  const firstAvailableDay = nextAvailable.dates.find((d) => d.available)?.day ?? nextAvailable.dates[0].day;
+  // Flatten all time slots, filter out "View All", take first 9
+  const allSlots = nextAvailable.times
+    .flat()
+    .filter((t) => t !== "View All")
+    .slice(0, 9);
+
+  // Group into rows of 3
+  const slotRows: string[][] = [];
+  for (let i = 0; i < allSlots.length; i += 3) {
+    slotRows.push(allSlots.slice(i, i + 3));
+  }
+
+  const firstAvailableDay =
+    nextAvailable.dates.find((d) => d.available)?.day ?? nextAvailable.dates[0].day;
   const [selectedDay, setSelectedDay] = useState(firstAvailableDay);
-  const [selectedTime, setSelectedTime] = useState<string>(nextAvailable.times[1]?.[1] ?? "14:00");
+  const [selectedTime, setSelectedTime] = useState<string>(allSlots[5] ?? allSlots[0] ?? "");
   const [selectedFormat, setSelectedFormat] = useState<"Online" | "In person">(
     sessionTypes.includes("In person") ? "In person" : "Online"
   );
@@ -99,11 +148,15 @@ export default function ProfileBookingCard({ specialist }: ProfileBookingCardPro
         <div className="flex gap-2">
           <div className="flex-1 bg-[rgba(13,13,13,0.05)] rounded-[8px] flex items-center justify-center gap-1 py-2">
             <span className="text-[#676665] text-[12px] leading-5">Time:</span>
-            <span className="text-[#013d47] text-[14px] font-medium leading-5">{selectedSession.duration.split("/")[0].trim()}</span>
+            <span className="text-[#013d47] text-[14px] font-medium leading-5">
+              {selectedSession.duration.split("/")[0].trim()}
+            </span>
           </div>
           <div className="flex-1 bg-[rgba(13,13,13,0.05)] rounded-[8px] flex items-center justify-center gap-1 py-2">
             <span className="text-[#676665] text-[12px] leading-5">Price:</span>
-            <span className="text-[#013d47] text-[14px] font-medium leading-5">{selectedSession.price.split("/")[0].trim()}</span>
+            <span className="text-[#013d47] text-[14px] font-medium leading-5">
+              {selectedSession.price.split("/")[0].trim()}
+            </span>
           </div>
         </div>
       </div>
@@ -123,7 +176,7 @@ export default function ProfileBookingCard({ specialist }: ProfileBookingCardPro
                 className={[
                   "flex-1 flex items-center justify-center gap-2 py-2 rounded-[8px] text-[14px] leading-5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013d47]/30",
                   isSelected
-                    ? "bg-[rgba(13,13,13,0.05)] border border-[#fb652b] text-[#1c1c1c]"
+                    ? "bg-[rgba(13,13,13,0.05)] border border-[#fb652b] text-[#1c1c1c] cursor-default"
                     : available
                     ? "bg-[rgba(13,13,13,0.05)] text-[#1c1c1c] hover:bg-[rgba(13,13,13,0.08)] cursor-pointer"
                     : "bg-[rgba(13,13,13,0.03)] text-[rgba(13,13,13,0.3)] cursor-not-allowed",
@@ -137,82 +190,91 @@ export default function ProfileBookingCard({ specialist }: ProfileBookingCardPro
         </div>
       </div>
 
-      {/* Date picker */}
-      <div className="flex flex-col gap-3">
-        <div className="flex items-center justify-between text-[14px] leading-5">
-          <span className="font-medium text-[#1c1c1c]">Choose time</span>
-          <span className="text-[#676665] font-normal">{nextAvailable.weekLabel}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <button
-            disabled
-            className="w-8 h-[52px] flex items-center justify-center rounded-[8px] cursor-not-allowed focus-visible:outline-none shrink-0"
-          >
-            <ChevronLeftIcon disabled />
-          </button>
-          {nextAvailable.dates.slice(0, 4).map((d) => {
-            const isSelected = d.day === selectedDay;
-            const isUnavailable = !d.available;
-            return (
-              <button
-                key={d.day}
-                onClick={() => d.available && setSelectedDay(d.day)}
-                disabled={isUnavailable}
-                className={[
-                  "flex-1 h-[52px] flex flex-col items-center justify-center rounded-[8px] transition-colors focus-visible:outline-none focus-visible:ring-2",
-                  isSelected
-                    ? "bg-[#fb652b] focus-visible:ring-[#fb652b]/60"
-                    : isUnavailable
-                    ? "bg-[#f6f6f5] opacity-50 cursor-not-allowed"
-                    : "bg-[rgba(13,13,13,0.05)] hover:bg-[rgba(13,13,13,0.08)] cursor-pointer focus-visible:ring-[#013d47]/30",
-                ].join(" ")}
-              >
-                <span className={["text-[16px] font-medium leading-6", isSelected ? "text-white" : "text-[#1c1c1c]"].join(" ")}>
-                  {d.day}
-                </span>
-                <span className={["text-[14px] leading-5", isSelected ? "text-white/80" : "text-[rgba(13,13,13,0.5)]"].join(" ")}>
-                  {d.dayName}
-                </span>
-              </button>
-            );
-          })}
-          <button className="w-8 h-[52px] flex items-center justify-center rounded-[8px] hover:bg-[rgba(13,13,13,0.05)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013d47]/30 shrink-0">
-            <ChevronRightIcon />
-          </button>
-        </div>
-      </div>
-
-      {/* Time slots */}
-      <div className="flex flex-col gap-2 pt-3">
-        {nextAvailable.times.map((row, rowIdx) => (
-          <div key={rowIdx} className="flex gap-2">
-            {row.map((time) => {
-              if (!time) return null;
-              const isSelected = time !== "View All" && time === selectedTime;
-              const isViewAll = time === "View All";
+      {/* Date + time picker */}
+      <div className="flex flex-col gap-2">
+        {/* Date row */}
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center justify-between text-[14px] leading-5">
+            <span className="font-medium text-[#1c1c1c]">Choose time</span>
+            <span className="text-[#676665] font-normal">{nextAvailable.weekLabel}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              disabled
+              className="w-8 h-[52px] flex items-center justify-center rounded-[8px] cursor-not-allowed focus-visible:outline-none shrink-0"
+            >
+              <ChevronLeftIcon disabled />
+            </button>
+            {nextAvailable.dates.slice(0, 4).map((d) => {
+              const isSelected = d.day === selectedDay;
+              const isUnavailable = !d.available;
               return (
                 <button
-                  key={time}
-                  onClick={() => !isViewAll && setSelectedTime(time)}
+                  key={d.day}
+                  onClick={() => d.available && setSelectedDay(d.day)}
+                  disabled={isUnavailable}
                   className={[
-                    "flex-1 py-2 flex items-center justify-center rounded-[8px] text-[14px] leading-5 transition-colors focus-visible:outline-none focus-visible:ring-2 cursor-pointer",
+                    "flex-1 h-[52px] flex flex-col items-center justify-center rounded-[8px] transition-colors focus-visible:outline-none focus-visible:ring-2",
                     isSelected
-                      ? "bg-[rgba(13,13,13,0.05)] border border-[#fb652b] text-[#1c1c1c] focus-visible:ring-[#fb652b]/60"
-                      : isViewAll
-                      ? "bg-transparent text-[#fb652b] font-medium hover:underline focus-visible:ring-[#fb652b]/40"
-                      : "bg-[rgba(13,13,13,0.05)] text-[#1c1c1c] hover:bg-[rgba(13,13,13,0.08)] focus-visible:ring-[#013d47]/30",
+                      ? "bg-[#fb652b] focus-visible:ring-[#fb652b]/60"
+                      : isUnavailable
+                      ? "bg-[#f6f6f5] opacity-50 cursor-not-allowed"
+                      : "bg-[rgba(13,13,13,0.05)] hover:bg-[rgba(13,13,13,0.08)] cursor-pointer focus-visible:ring-[#013d47]/30",
                   ].join(" ")}
                 >
-                  {time}
+                  <span
+                    className={[
+                      "text-[16px] font-medium leading-6",
+                      isSelected ? "text-white" : "text-[#1c1c1c]",
+                    ].join(" ")}
+                  >
+                    {d.day}
+                  </span>
+                  <span
+                    className={[
+                      "text-[14px] leading-5",
+                      isSelected ? "text-white/80" : "text-[rgba(13,13,13,0.5)]",
+                    ].join(" ")}
+                  >
+                    {d.dayName}
+                  </span>
                 </button>
               );
             })}
+            <button className="w-8 h-[52px] flex items-center justify-center rounded-[8px] hover:bg-[rgba(13,13,13,0.05)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013d47]/30 shrink-0">
+              <ChevronRightIcon />
+            </button>
           </div>
-        ))}
-        <div className="flex justify-center">
-          <button className="text-[#fb652b] text-[14px] font-medium leading-5 hover:underline focus-visible:outline-none cursor-pointer">
-            View more availabilities
-          </button>
+        </div>
+
+        {/* Time slots — 3 per row */}
+        <div className="flex flex-col gap-2 pt-3">
+          {slotRows.map((row, rowIdx) => (
+            <div key={rowIdx} className="flex gap-2">
+              {row.map((time) => {
+                const isSelected = time === selectedTime;
+                return (
+                  <button
+                    key={time}
+                    onClick={() => setSelectedTime(time)}
+                    className={[
+                      "flex-1 py-2 flex items-center justify-center rounded-[8px] text-[14px] leading-5 transition-colors focus-visible:outline-none focus-visible:ring-2 cursor-pointer",
+                      isSelected
+                        ? "bg-[rgba(13,13,13,0.05)] border border-[#fb652b] text-[#1c1c1c] focus-visible:ring-[#fb652b]/60"
+                        : "bg-[rgba(13,13,13,0.05)] text-[#1c1c1c] hover:bg-[rgba(13,13,13,0.08)] focus-visible:ring-[#013d47]/30",
+                    ].join(" ")}
+                  >
+                    {time}
+                  </button>
+                );
+              })}
+            </div>
+          ))}
+          <div className="flex justify-center">
+            <button className="text-[#fb652b] text-[14px] font-medium leading-5 hover:underline focus-visible:outline-none cursor-pointer">
+              View more availabilities
+            </button>
+          </div>
         </div>
       </div>
 
@@ -223,7 +285,9 @@ export default function ProfileBookingCard({ specialist }: ProfileBookingCardPro
         </button>
         <div className="flex items-center justify-center gap-2">
           <ShieldCheckIcon />
-          <span className="text-[#013d47] text-[14px] leading-5">Free cancellation within 24h</span>
+          <span className="text-[#013d47] text-[14px] leading-5">
+            Free cancellation within 24h
+          </span>
         </div>
       </div>
     </div>

@@ -275,7 +275,7 @@ export default function ProfileContent({ specialist }: ProfileContentProps) {
                       onClick={() => toggleFaq(item.id)}
                       className="w-full flex items-start gap-3 p-6 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#013d47]/30"
                     >
-                      <span className="flex-1 text-[#1c1c1c] text-[18px] sm:text-[20px] font-medium leading-6">{item.question}</span>
+                      <span className="flex-1 text-[#1c1c1c] text-[20px] font-medium leading-6">{item.question}</span>
                       <span className="shrink-0 mt-0.5">
                         <PlusIcon rotated={isOpen} />
                       </span>
