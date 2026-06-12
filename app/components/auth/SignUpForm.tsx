@@ -54,7 +54,7 @@ export default function SignUpForm({ role }: SignUpFormProps) {
   return (
     <div className="flex flex-col gap-[24px] w-full">
       {/* Heading */}
-      <div className="flex flex-col gap-[8px] w-full">
+      <div className="flex flex-col gap-[12px] w-full">
         <h1 className="text-[40px] font-semibold leading-[48px] tracking-[-0.8px] text-[#013d47] text-center capitalize">
           Sign Up
         </h1>

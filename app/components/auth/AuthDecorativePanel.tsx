@@ -67,8 +67,8 @@ export default function AuthDecorativePanel({ role }: { role: AuthRole }) {
       </div>
 
       {/* Text block */}
-      <div className="absolute bottom-[22%] left-0 right-0 flex flex-col items-center gap-[8px] px-[32px] xl:px-[80px] 2xl:px-[120px]">
-        <p className="text-[28px] xl:text-[36px] 2xl:text-[40px] font-semibold leading-[36px] xl:leading-[44px] 2xl:leading-[48px] tracking-[-0.8px] text-[#013d47] text-center whitespace-pre-wrap capitalize">
+      <div className="absolute bottom-[22%] left-0 right-0 flex flex-col items-center gap-[8px] px-[32px] xl:px-[80px] min-[1440px]:px-[120px]">
+        <p className="text-[28px] xl:text-[36px] min-[1440px]:text-[40px] font-semibold leading-[36px] xl:leading-[44px] min-[1440px]:leading-[48px] tracking-[-0.8px] text-[#013d47] text-center whitespace-pre-wrap capitalize">
           {heading}
         </p>
         <p className="text-[16px] leading-[24px] text-[#013d47] text-center">

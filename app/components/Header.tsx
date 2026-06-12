@@ -37,7 +37,10 @@ export default function Header({ variant = "light" }: HeaderProps) {
         {/* Nav links — desktop */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map(({ label, href }) => {
-            const isActive = href !== "#" && pathname === href;
+            const isActive =
+            href !== "#" &&
+            (pathname === href ||
+              (href === "/find-specialists" && pathname.startsWith("/specialists")));
             return isActive ? (
               <Link
                 key={label}
@@ -62,7 +65,7 @@ export default function Header({ variant = "light" }: HeaderProps) {
         {/* Actions — desktop */}
         <div className="hidden lg:flex items-center gap-2">
           <Link
-            href="#"
+            href="/sign-up"
             className="border-[1.5px] border-white rounded-full px-4 xl:px-6 py-2 text-white text-sm xl:text-base font-medium leading-6 whitespace-nowrap hover:bg-white/10 active:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
           >
             Login
@@ -105,7 +108,10 @@ export default function Header({ variant = "light" }: HeaderProps) {
         <div className={`lg:hidden mt-2 ${variant === "dark" ? "bg-[#013d47]" : "bg-white/10 backdrop-blur-md"} rounded-[24px] px-6 py-6 flex flex-col gap-5`}>
           <nav className="flex flex-col gap-4">
             {navLinks.map(({ label, href }) => {
-              const isActive = href !== "#" && pathname === href;
+              const isActive =
+            href !== "#" &&
+            (pathname === href ||
+              (href === "/find-specialists" && pathname.startsWith("/specialists")));
               return isActive ? (
                 <Link
                   key={label}
@@ -130,7 +136,7 @@ export default function Header({ variant = "light" }: HeaderProps) {
           </nav>
           <div className="flex flex-col gap-2 pt-2 border-t border-white/20">
             <Link
-              href="#"
+              href="/sign-up"
               onClick={() => setMenuOpen(false)}
               className="border-[1.5px] border-white rounded-full px-6 py-2.5 text-white text-base font-medium leading-6 text-center hover:bg-white/10 transition-colors"
             >
